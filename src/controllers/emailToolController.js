@@ -1,15 +1,31 @@
 import nodemailer from 'nodemailer';
 
-// El transporter se inicializa una vez cuando el servidor arranca
-const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_HOST || 'smtp.sendgrid.net',
-  port: process.env.EMAIL_PORT || 587,
-  secure: false, 
-  auth: {
-    user: process.env.EMAIL_USER || 'apikey',
-    pass: process.env.SENDGRID_API_KEY,
-  },
-});
+// Variable para almacenar el transporter (se inicializa de forma lazy)
+let transporter = null;
+
+/**
+ * Obtiene o crea el transporter de nodemailer
+ */
+const getTransporter = () => {
+  if (!transporter) {
+    // Verificar que las credenciales estén configuradas
+    if (!process.env.SENDGRID_API_KEY) {
+      throw new Error('SENDGRID_API_KEY no está configurada en las variables de entorno');
+    }
+
+    console.log('📧 Inicializando transporter de email con SendGrid...');
+    transporter = nodemailer.createTransport({
+      host: process.env.EMAIL_HOST || 'smtp.sendgrid.net',
+      port: parseInt(process.env.EMAIL_PORT) || 587,
+      secure: false, 
+      auth: {
+        user: process.env.EMAIL_USER || 'apikey',
+        pass: process.env.SENDGRID_API_KEY,
+      },
+    });
+  }
+  return transporter;
+};
 
 /**
  * Función de "mail merge"
@@ -74,7 +90,8 @@ export const handleSendEmail = async (req, res) => {
   };
 
   try {
-    const info = await transporter.sendMail(mailOptions);
+    const emailTransporter = getTransporter();
+    const info = await emailTransporter.sendMail(mailOptions);
     console.log(`[EMAIL] ✅ Correo enviado exitosamente a ${to_email}: ${info.messageId}`);
     
     // Respuesta para ElevenLabs

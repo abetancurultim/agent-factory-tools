@@ -20,6 +20,6 @@ app.get('/api/health', (req, res) => {
 // --- Rutas de Tools ---
 app.use('/api/tools', toolRoutes);
 
-app.listen(port, '0.0.0.0', () => {
-  console.log(`🚀 Servidor de Tools escuchando en http://0.0.0.0:${port}`);
+app.listen(port, () => {
+  console.log(`🚀 API Server running on http://localhost:${port}`);
 });

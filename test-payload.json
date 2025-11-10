@@ -1,0 +1,15 @@
+{
+  "to_email": "tu_email_personal@dominio.com",
+  "cc_email": "otro_email@dominio.com",
+  "from_email": "Agente IA (Prueba) <pruebas@agentfactory.com>",
+  "subject_template": "🦷 Nueva Cita (PRUEBA) - {{nombre}}",
+  "body_template": "<div style=\"font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;\"><h2 style=\"color: #0066cc; text-align: center;\">🦷 Balance - Nueva Solicitud de Cita</h2><div style=\"background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0;\"><h3 style=\"color: #333; margin-top: 0;\">👤 Información del Cliente</h3><p><strong>Nombre:</strong> {{nombre}}</p><p><strong>📞 Teléfono:</strong> {{telefono}}</p><p><strong>🎂 Fecha de Nacimiento:</strong> {{fecha_nacimiento}}</p></div><div style=\"background-color: #e7f3ff; padding: 15px; border-radius: 5px; margin: 20px 0;\"><h3 style=\"color: #333; margin-top: 0;\">🦷 Información Dental</h3><p><strong>Necesidad Dental:</strong> {{necesidad_dental}}</p><p><strong>🛡️ Seguro Dental:</strong> {{seguro_dental}}</p><p><strong>📅 Fecha Preferida:</strong> {{fecha_preferida}}</p><p><strong>🕒 Horario Preferido:</strong> {{horario_preferido}}</p></div><div style=\"background-color: #fff3cd; padding: 15px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #ffc107;\"><p style=\"margin: 0;\"><strong>⚡ Acción Requerida:</strong> Contactar al cliente para confirmar y agendar la cita dental.</p></div></div>",
+
+  "nombre": "Juan Pérez (Test)",
+  "telefono": "555-123-4567",
+  "fecha_nacimiento": "15/05/1985",
+  "necesidad_dental": "Limpieza profunda",
+  "seguro_dental": "Metlife",
+  "horario_preferido": "Tardes",
+  "fecha_preferida": "Próximo viernes"
+}
