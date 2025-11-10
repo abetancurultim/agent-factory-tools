@@ -20,7 +20,6 @@ app.get('/api/health', (req, res) => {
 // --- Rutas de Tools ---
 app.use('/api/tools', toolRoutes);
 
-// Iniciar servidor (ESCUCHANDO EN 0.0.0.0 para DigitalOcean)
 app.listen(port, '0.0.0.0', () => {
   console.log(`🚀 Servidor de Tools escuchando en http://0.0.0.0:${port}`);
 });
